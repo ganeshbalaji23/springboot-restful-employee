@@ -34,7 +34,7 @@ public class EmployeeController {
 		return emplService.getEmployee(empId);
 	}
 	
-	@GetMapping("/getAllEmployeeDetails}")
+	@GetMapping("/getAllEmployeeDetails")
 	public List<Employee> getEmployeeDetail() {
 		return emplService.getAllEmployees();
 	}
