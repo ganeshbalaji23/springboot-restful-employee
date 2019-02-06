@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import com.myspring.employee.model.Employee;
 
 @Component
-public interface IEmployeeRepository extends CrudRepository<Employee, String> {
+public interface IEmployeeRepository extends CrudRepository<Employee, Integer> {
 	
 	
 

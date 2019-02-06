@@ -34,12 +34,12 @@ public class EmployeeService implements IEmployeeService {
 	}
 
 	@Override
-	public Employee getEmployee(String empId) {
+	public Employee getEmployee(int empId) {
 		return empRepository.findOne(empId);
 	}
 
 	@Override
-	public boolean deleteEmployee(String empId) {
+	public boolean deleteEmployee(int empId) {
 		 empRepository.delete(empId);
 		 return true;
 	}

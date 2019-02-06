@@ -12,8 +12,8 @@ public interface IEmployeeService {
 	
 	List<Employee> getAllEmployees();
 	
-	Employee getEmployee(String empId);
+	Employee getEmployee(int empId);
 	
-	boolean deleteEmployee(String empId);
+	boolean deleteEmployee(int empId);
 
 }

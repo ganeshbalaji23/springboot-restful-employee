@@ -25,13 +25,13 @@ public class EmployeeController {
 		return emplService.addEmployee(employee);
 	}
 	
-	@PutMapping("/updateEmployee/{empId}")
-	public Employee updateEmployeeDetails(@RequestBody Employee employee, @PathVariable("empId") String empId) {
+	@PutMapping("/updateEmployee")
+	public Employee updateEmployeeDetails(@RequestBody Employee employee) {
 		return emplService.updateEmployee(employee);
 	}
 	
 	@GetMapping("/getEmployeeDetail/{empId}")
-	public Employee getEmployeeDetail(@PathVariable("empId") String empId) {
+	public Employee getEmployeeDetail(@PathVariable("empId") int empId) {
 		Employee e = emplService.getEmployee(empId);
 		System.out.println(e.toString());
 		return e;
@@ -43,7 +43,7 @@ public class EmployeeController {
 	}
 	
 	@DeleteMapping("/deleteEmployee/{empId}")
-	public void deleteEmployee(@PathVariable("empId") String empId) {
+	public void deleteEmployee(@PathVariable("empId") int empId) {
 		emplService.deleteEmployee(empId);
 	}
 

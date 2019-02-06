@@ -1,30 +1,24 @@
 package com.myspring.employee.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table (name="employee")
 public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "employee_id")
-	private String empNo;
-	@Column(name = "employee_designation")
+	private int empNo;
 	private String empName;
-	@Column(name = "employee_name")
 	private String designation;
-	@Column(name = "employee_salary")
 	private String salary;
-	public String getEmpNo() {
+	
+	public int getEmpNo() {
 		return empNo;
 	}
-	public void setEmpNo(String empNo) {
+	public void setEmpNo(int empNo) {
 		this.empNo = empNo;
 	}
 	public String getEmpName() {
