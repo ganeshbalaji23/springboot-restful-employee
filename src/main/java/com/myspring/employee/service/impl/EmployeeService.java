@@ -35,12 +35,12 @@ public class EmployeeService implements IEmployeeService {
 
 	@Override
 	public Employee getEmployee(int empId) {
-		return empRepository.findOne(empId);
+		return empRepository.findById(empId).get();
 	}
 
 	@Override
 	public boolean deleteEmployee(int empId) {
-		 empRepository.delete(empId);
+		 empRepository.deleteById(empId);
 		 return true;
 	}
 
