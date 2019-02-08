@@ -1,5 +1,5 @@
 server:
-  port: 8071
+  port: 8070
   
 spring:
   datasource:
@@ -12,5 +12,5 @@ spring:
     show-sql: true
     
 eureka:  client:    service-url:      defaultZone: http://localhost:8092/eureka
-        instance:    instance-id: 2
+        instance:    instance-id: 1
     
