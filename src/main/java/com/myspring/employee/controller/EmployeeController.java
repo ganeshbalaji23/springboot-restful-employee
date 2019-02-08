@@ -1,5 +1,6 @@
 package com.myspring.employee.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.myspring.employee.model.Employee;
 import com.myspring.employee.service.impl.EmployeeService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 public class EmployeeController {
@@ -38,13 +40,35 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/getAllEmployeeDetails")
+	@HystrixCommand(fallbackMethod = "getDataFallback")
 	public List<Employee> getEmployeeDetail() {
-		return emplService.getAllEmployees();
+		
+		System.out.println("*********************Inside Get all employee details page**********************************");
+		List<Employee> empList = emplService.getAllEmployees();
+		if(!empList.isEmpty()) {
+			throw new RuntimeException();
+		}
+		return empList;
 	}
 	
 	@DeleteMapping("/deleteEmployee/{empId}")
 	public void deleteEmployee(@PathVariable("empId") int empId) {
 		emplService.deleteEmployee(empId);
+	}
+	
+	public List<Employee> getDataFallback() {
+		
+		System.out.println("*********************Inside Falback Method**********************************");
+		Employee emp = new Employee();
+		emp.setEmpNo(2);
+		emp.setEmpName("Dhivya");
+		emp.setDesignation("SE");
+		emp.setSalary("10000");
+		
+		List<Employee> empList = new ArrayList<>();
+		empList.add(emp);
+		return empList;
+		
 	}
 
 }
