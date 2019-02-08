@@ -42,6 +42,8 @@ public class EmployeeController {
 	@GetMapping("/getAllEmployeeDetails")
 	@HystrixCommand(fallbackMethod = "getDataFallback")
 	public List<Employee> getEmployeeDetail() {
+		
+		System.out.println("*********************Inside Get all employee details page**********************************");
 		List<Employee> empList = emplService.getAllEmployees();
 		if(!empList.isEmpty()) {
 			throw new RuntimeException();
@@ -56,6 +58,7 @@ public class EmployeeController {
 	
 	public List<Employee> getDataFallback() {
 		
+		System.out.println("*********************Inside Falback Method**********************************");
 		Employee emp = new Employee();
 		emp.setEmpNo(2);
 		emp.setEmpName("Dhivya");
